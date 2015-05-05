@@ -17,11 +17,12 @@ public class Robot extends IterativeRobot {
 		m_autonChooser = new SendableChooser();
 		m_autonChooser.addDefault("Do Nothing (default)", 0);
 		m_autonChooser.addObject("Move to Normal and Shoot", 1);
+		m_autonChooser.addObject("Fun While Shooting", 2);
 		SmartDashboard.putData("Choose Autonomous: ", m_autonChooser);
 	}
 	
 	public void disabledInit() {
-
+		m_autonController.reset();
 	}
 
 	public void disabledPeriodic() {
@@ -36,6 +37,8 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		if(m_autonPicked == 1) {
 			m_autonController.setToFrontAndShoot();
+		} else if(m_autonPicked == 2) {
+			m_autonController.funWhileShooting();
 		}
 	}
 
