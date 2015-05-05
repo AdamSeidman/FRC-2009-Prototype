@@ -22,4 +22,11 @@ public class Motor extends Victor {
 		super.set(speed);
 	}
 	
+	public double get() {
+		double val = super.get();
+		if(inverted)
+			val *= -1.0;
+		return val;
+	}
+	
 }
