@@ -23,12 +23,16 @@ public class OI {
 		return m_instance;
 	}
 	
-	public void enableTeleopControls() {
+	public void printStats() {
 		System.out.println("Rotation Pot Value: " + m_robot.getTwistPot());
 		System.out.println("Tilt Pot Value: " + m_robot.getTiltPot());
 		System.out.println("Joystick Twist: " + m_joystick.getTwist());
 		System.out.println("Joystick Throttle: " + m_joystick.getThrottle());
 		System.out.println("POV: " + getPOV() + "\n");
+	}
+	
+	public void enableTeleopControls() {
+		printStats();
 	}
 	
 	public void AenableTeleopControls() {
@@ -76,6 +80,10 @@ public class OI {
 		}
 	}
 
+	public void setLastThrottleValue(double value) {
+		m_lastThrottleValue = value;
+	}
+	
 	public boolean getTrigger() {
 		return m_joystick.getTrigger();
 	}

@@ -43,18 +43,15 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void teleopInit() {
-		
+		m_OI.setLastThrottleValue(m_OI.getThrottle());
 	}
 
 	public void teleopPeriodic() {
 		m_OI.enableTeleopControls();
 	}
 
-	public void testInit() {
-
-	}
-
 	public void testPeriodic() {
-
+		m_OI.printStats();
 	}
+	
 }
