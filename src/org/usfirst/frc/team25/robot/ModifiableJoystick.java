@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class ModifiableJoystick extends Joystick {
 
-	private boolean[] disabledButtons;
+	private ArrayList<Integer> disabledButtons;
 	public double xMinimum = -1.0, xMaximum = 1.0, yMinimum = -1.0,
 			yMaximum = 1.0, twistMinimum = -1.0, twistMaximum = 1.0,
 			zMinimum = -1.0, zMaximum = 1.0, throttleMinimum = -1.0,
@@ -14,21 +14,26 @@ public class ModifiableJoystick extends Joystick {
 
 	public ModifiableJoystick(int channel) {
 		super(channel);
-		disabledButtons = new boolean[100];
+		disabledButtons = new ArrayList<Integer>();
 	}
 
 	public boolean getButton(int button) {
-		if (disabledButtons[button])
+		if (disabledButtons.contains(button))
 			return false;
 		return super.getRawButton(button);
 	}
 
 	public boolean getEnabled(int button) {
-		return !disabledButtons[button];
+		if(disabledButtons.contains(button))
+			return false;
+		return true;
 	}
 
-	public void setEnabled(int button, boolean enabled) {
-		disabledButtons[button] = !enabled;
+	public void setEnabled(int button, boolean enable) {
+		if(enable && disabledButtons.contains(button))
+			disabledButtons.remove(button);
+		else if(!enable && !disabledButtons.contains(button))
+			disabledButtons.add(button);
 	}
 	
 	public double x() {
