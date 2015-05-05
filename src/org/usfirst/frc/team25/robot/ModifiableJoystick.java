@@ -28,11 +28,14 @@ public class ModifiableJoystick extends Joystick {
 			return false;
 		return true;
 	}
-
-	public void setEnabled(int button, boolean enable) {
-		if(enable && disabledButtons.contains(button))
+	
+	public void enableButton(int button) {
+		if(disabledButtons.contains(button))
 			disabledButtons.remove(button);
-		else if(!enable && !disabledButtons.contains(button))
+	}
+	
+	public void disableButton(int button) {
+		if(!disabledButtons.contains(button))
 			disabledButtons.add(button);
 	}
 	
