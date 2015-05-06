@@ -34,7 +34,7 @@ public class AutonController {
 				m_step++;
 			}
 		} else {
-			m_robot.setShooterSpeed(1.0);
+			m_robot.runShooterOut();
 		}
 	}
 	
@@ -47,7 +47,7 @@ public class AutonController {
 				m_step++;
 			}
 		} else if(m_step == 2) {
-			m_robot.setShooterSpeed(1.0);
+			m_robot.runShooterOut
 			m_step++;
 		} else if(m_step == 3) {
 			if(!m_robot.twistGoto(Constants.ROTATION_MAXIMUM, 0.5)) {
