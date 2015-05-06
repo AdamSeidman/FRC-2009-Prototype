@@ -65,11 +65,11 @@ public class OI {
 		}
 
 		if (getPOV() % 360 == 0) {
-			m_robot.setShooterSpeed(1.0);
+			m_robot.runShooterOut();
 		} else if (getPOV() == 180) {
-			m_robot.setShooterSpeed(-1.0);
+			m_robot.runShooterIn();
 		} else {
-			m_robot.setShooterSpeed(0.0);
+			m_robot.stopShooter();
 		}
 
 		if (m_robot.getTwistPot() <= Constants.ROTATION_MINIMUM
