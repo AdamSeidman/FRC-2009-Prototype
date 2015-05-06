@@ -85,5 +85,17 @@ public class Prototype {
 		m_rotation.set(0.0);
 		m_shooter.set(0.0);
 	}
-	
+
+	public void runShooterOut() {
+		m_shooter.set(1.0);
+	}
+
+	public void stopShooter() {
+		m_shooter.set(0.0);
+	}
+
+	public void runShooterIn() {
+		m_shooter.set(-1.0);
+	}
+
 }
